@@ -1,0 +1,108 @@
+<p>dashboard works!</p>
+
+<div class="container mt-3">
+    <h2>Customer Table</h2>
+    <button type="button" class="btn btn-primary float-end" (click)="addSet(content1)" >Add Customer</button>
+
+               
+    <table class="table table-light">
+      <thead>
+        <tr>
+          <th>Customer_Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Country</th>
+          <th>Created Date</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <tr *ngFor="let u of result">
+                <td>{{u.Customer_Id}}</td>
+                <td>{{u.First_Name}}</td>
+                <td>{{u.Last_Name}}</td>
+                <td>{{u.Country}}</td>
+                <td>{{u.Created_Date}}</td>
+                <td>
+                    <button type="button" class="btn btn-info" (click)="Seton(u.Customer_Id)">Edit</button>&nbsp;
+                    <button type="button" class="btn btn-warning" (click)="deleteRecord(u.Customer_Id)" >Delete</button>&nbsp;
+                    <button type="button" class="btn btn-danger" (click)="open(content,u.Customer_Id)">View</button>
+                </td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Friend</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="card" style="width:400px">
+        <img class="card-img-top" src="../assets/image/coffee-g7829f23e1_1280.jpg" alt="Card image" style="width:100%">
+        <div class="card-body">
+        <h4 class="card-text">First Name:&nbsp;&nbsp; {{result12.first_Name}}</h4>
+          <h4 class="card-text">Last Name:&nbsp;&nbsp;{{result12.last_Name}}</h4>
+          <p class="card-text">Country:&nbsp;&nbsp;{{result12.country}}</p>
+          <p class="card-text">DataCreated:&nbsp;&nbsp;{{result12.created_Date}}</p>
+          <a href="#" class="btn btn-primary" >BackToView</a>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+    </div>
+  </ng-template>
+
+  <ng-template #content1 let-modal>
+    <div class="container mt-3">
+      <h2>Add Customer Deatails</h2>
+      <form [formGroup]="addCustomer" (ngSubmit)="onSubmit()" novalidate>
+        <div class="mb-3 mt-3">
+          <label for="First_Name">First Name:</label>
+          <input type="First_Name" class="form-control" id="First_Name" placeholder="Enter First Name" formControlName="First_Name" name="First_Name">
+        </div>
+        <div class="mb-3">
+          <label for="Last_Name">Last Name:</label>
+          <input type="Last_Name" class="form-control" id="Last_Name" placeholder="Enter Last Name" formControlName="Last_Name" name="Last_Name">
+        </div>
+        <div class="mb-3">
+          <label for="Country">Country:</label>
+          <input type="Country" class="form-control" id="Country" placeholder="Enter Country" formControlName="Country" name="Country">
+        </div>
+        <button type="submit"  class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    {{data|json}}
+  </ng-template>
+
+
+<!--
+
+  <ng-template #content2 let-modal>
+    <div class="container mt-3">
+      <h2>Edit Customer Deatails</h2>
+      <form [formGroup]="updateCustomer" (ngSubmit)="onSubmit1()" novalidate>
+        <div class="mb-3 mt-3">
+          <label for="First_Name">First Name:</label>
+          <input type="First_Name" class="form-control" id="First_Name" placeholder="Enter First Name" formControlName="First_Name" name="First_Name">
+        </div>
+        <div class="mb-3">
+          <label for="Last_Name">Last Name:</label>
+          <input type="Last_Name" class="form-control" id="Last_Name" placeholder="Enter Last Name" formControlName="Last_Name" name="Last_Name">
+        </div>
+        <div class="mb-3">
+          <label for="Country">Country:</label>
+          <input type="Country" class="form-control" id="Country" placeholder="Enter Country" formControlName="Country" name="Country">
+        </div>
+        <button type="submit"  class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    {{data|json}}
+    {{responseData1|json}}
+  </ng-template>-->

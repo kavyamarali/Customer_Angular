@@ -1,0 +1,22 @@
+<p>edit works!</p>
+<p>add-customer works!</p>
+<div class="container mt-3">
+    <h2>Edit Customer Deatails</h2>
+    <form [formGroup]="addCustomer" (ngSubmit)="onSubmit()" novalidate>
+      <div class="mb-3 mt-3">
+        <label for="First_Name">First Name:</label>
+        <input type="First_Name" class="form-control" id="First_Name" placeholder="Enter First Name" formControlName="First_Name" name="First_Name">
+      </div>
+      <div class="mb-3">
+        <label for="Last_Name">Last Name:</label>
+        <input type="Last_Name" class="form-control" id="Last_Name" placeholder="Enter Last Name" formControlName="Last_Name" name="Last_Name">
+      </div>
+      <div class="mb-3">
+        <label for="Country">Country:</label>
+        <input type="Country" class="form-control" id="Country" placeholder="Enter Country" formControlName="Country" name="Country">
+      </div>
+      <button type="submit"  class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  {{data|json}}
+  {{responseData|json}}
